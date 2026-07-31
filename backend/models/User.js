@@ -14,7 +14,6 @@ const User = sequelize.define('User', {
     validate: { isEmail: true }
   },
   password: {
-    // Stores the bcrypt-encrypted password, never plain text
     type: DataTypes.STRING,
     allowNull: false
   }

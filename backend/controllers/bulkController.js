@@ -5,7 +5,6 @@ const ExcelJS = require('exceljs');
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 
-// In-memory job status tracker (fine for an assignment; use Redis/DB in production)
 const bulkJobs = {};
 
 /**
@@ -29,7 +28,6 @@ exports.bulkUploadProducts = async (req, res) => {
   const jobId = `job-${Date.now()}`;
   bulkJobs[jobId] = { status: 'processing', processed: 0, failed: 0, errors: [] };
 
-  // Respond right away so the client/gateway never times out waiting
   res.status(202).json({ message: 'Bulk upload started', jobId });
 
   const filePath = req.file.path;
@@ -52,8 +50,7 @@ exports.bulkUploadProducts = async (req, res) => {
   const stream = fs.createReadStream(filePath).pipe(csv());
 
   stream.on('data', (row) => {
-    // Pause the stream while we resolve category + push to batch,
-    // then resume — keeps memory bounded on huge files.
+    
     stream.pause();
     (async () => {
       try {
@@ -179,7 +176,7 @@ exports.generateProductReport = async (req, res) => {
       res.end();
     }
   } catch (err) {
-    // If headers are already sent (streaming in progress), just end the connection
+   
     if (!res.headersSent) {
       res.status(500).json({ message: 'Error generating report', error: err.message });
     } else {

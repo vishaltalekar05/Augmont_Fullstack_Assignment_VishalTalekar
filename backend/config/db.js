@@ -1,8 +1,6 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
-// Using MySQL via Sequelize. Switch dialect to 'postgres' if using PostgreSQL
-// (also update DB_PORT to 5432 in .env in that case).
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,

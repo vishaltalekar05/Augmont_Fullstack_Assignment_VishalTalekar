@@ -74,7 +74,7 @@ exports.getProductById = async (req, res) => {
 exports.getProducts = async (req, res) => {
   try {
     const page = Math.max(parseInt(req.query.page) || 1, 1);
-    const limit = Math.min(parseInt(req.query.limit) || 10, 100); // cap to avoid huge payloads
+    const limit = Math.min(parseInt(req.query.limit) || 10, 100); 
     const offset = (page - 1) * limit;
 
     const order = (req.query.order || 'asc').toLowerCase() === 'desc' ? 'DESC' : 'ASC';
@@ -96,7 +96,7 @@ exports.getProducts = async (req, res) => {
       order: [[sortBy, order]],
       limit,
       offset,
-      distinct: true // needed for correct count when using include
+      distinct: true 
     });
 
     return res.json({

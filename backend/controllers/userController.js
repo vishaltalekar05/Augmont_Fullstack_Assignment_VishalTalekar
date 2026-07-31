@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-// Create user (Sign up) - password is hashed before storing
 exports.createUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -29,7 +28,6 @@ exports.createUser = async (req, res) => {
   }
 };
 
-// Update user (email and/or password)
 exports.updateUser = async (req, res) => {
   try {
     const { id } = req.params;
@@ -51,7 +49,6 @@ exports.updateUser = async (req, res) => {
   }
 };
 
-// Get all users
 exports.getUsers = async (req, res) => {
   try {
     const users = await User.findAll({ attributes: ['id', 'email', 'createdAt'] });
@@ -61,7 +58,6 @@ exports.getUsers = async (req, res) => {
   }
 };
 
-// Login - issues a JWT on valid credentials
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;

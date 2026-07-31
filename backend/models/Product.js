@@ -20,7 +20,6 @@ const Product = sequelize.define('Product', {
     allowNull: false
   },
   image: {
-    // Stores relative path/URL of uploaded product image
     type: DataTypes.STRING,
     allowNull: true
   },
@@ -40,13 +39,13 @@ const Product = sequelize.define('Product', {
   tableName: 'products',
   timestamps: true,
   indexes: [
-    { fields: ['price'] },   // speeds up sort-by-price
-    { fields: ['name'] },    // speeds up search-by-name
+    { fields: ['price'] },   
+    { fields: ['name'] },    
     { fields: ['categoryId'] }
   ]
 });
 
-// A product belongs to a category; a category has many products
+
 Category.hasMany(Product, { foreignKey: 'categoryId', onDelete: 'CASCADE' });
 Product.belongsTo(Category, { foreignKey: 'categoryId' });
 

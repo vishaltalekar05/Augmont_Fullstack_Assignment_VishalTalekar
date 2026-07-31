@@ -1,7 +1,6 @@
 const multer = require('multer');
 const path = require('path');
 
-// Storage for product images
 const imageStorage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, path.join(__dirname, '../uploads')),
   filename: (req, file, cb) => {
@@ -9,7 +8,6 @@ const imageStorage = multer.diskStorage({
   }
 });
 
-// Storage for bulk-upload CSV/XLSX files
 const bulkStorage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, path.join(__dirname, '../uploads')),
   filename: (req, file, cb) => {
