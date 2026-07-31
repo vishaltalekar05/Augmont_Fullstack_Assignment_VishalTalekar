@@ -1,0 +1,46 @@
+<div class="container">
+
+<h2>Category Management</h2>
+
+<input
+type="text"
+placeholder="Category Name"
+[(ngModel)]="categoryName">
+
+<button (click)="saveCategory()">
+
+{{ editId ? 'Update' : 'Add' }}
+
+</button>
+
+<hr>
+
+<table border="1" cellpadding="10">
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Action</th>
+
+</tr>
+
+<tr *ngFor="let c of categories">
+
+<td>{{c.id}}</td>
+
+<td>{{c.name}}</td>
+
+<td>
+
+<button (click)="edit(c)">Edit</button>
+
+<button (click)="delete(c.id)">Delete</button>
+
+</td>
+
+</tr>
+
+</table>
+
+</div>

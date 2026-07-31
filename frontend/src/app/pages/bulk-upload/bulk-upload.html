@@ -1,0 +1,24 @@
+<div class="container">
+
+<h2>Bulk Upload Products</h2>
+
+<input
+type="file"
+accept=".csv"
+(change)="onFileSelect($event)">
+
+<button (click)="upload()">
+
+Upload
+
+</button>
+
+<hr>
+
+<p>Status : {{status}}</p>
+
+<p>Processed : {{processed}}</p>
+
+<p>Failed : {{failed}}</p>
+
+</div>

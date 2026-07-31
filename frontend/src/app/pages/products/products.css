@@ -1,0 +1,33 @@
+.container{
+    width:90%;
+    margin:auto;
+    margin-top:30px;
+}
+
+input,
+select{
+    padding:10px;
+    margin:5px;
+}
+
+button{
+    padding:10px 15px;
+    margin:5px;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,
+td{
+    text-align:center;
+    padding:10px;
+}
+
+img{
+    border-radius:5px;
+}

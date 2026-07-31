@@ -1,0 +1,84 @@
+<div class="container">
+
+  <h2>Product Management</h2>
+
+  <input
+    type="text"
+    placeholder="Product Name"
+    [(ngModel)]="productName">
+
+  <input
+    type="number"
+    placeholder="Price"
+    [(ngModel)]="productPrice">
+
+  <select [(ngModel)]="categoryId">
+    <option value="">Select Category</option>
+
+    <option
+      *ngFor="let c of categories"
+      [value]="c.id">
+
+      {{ c.name }}
+
+    </option>
+
+  </select>
+
+  <input
+    type="file"
+    (change)="onFileSelected($event)">
+
+  <button (click)="saveProduct()">
+
+    {{ editId ? 'Update Product' : 'Add Product' }}
+
+  </button>
+
+  <hr>
+
+  <table border="1" cellpadding="10">
+
+    <tr>
+
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Image</th>
+      <th>Action</th>
+
+    </tr>
+
+    <tr *ngFor="let p of products">
+
+      <td>{{ p.id }}</td>
+
+      <td>{{ p.name }}</td>
+
+      <td>{{ p.price }}</td>
+
+      <td>{{ p.Category?.name }}</td>
+
+      <td>
+
+        <img
+          *ngIf="p.image"
+          [src]="'http://localhost:5000' + p.image"
+          width="70">
+
+      </td>
+
+      <td>
+
+        <button (click)="edit(p)">Edit</button>
+
+        <button (click)="delete(p.id)">Delete</button>
+
+      </td>
+
+    </tr>
+
+  </table>
+
+</div>
